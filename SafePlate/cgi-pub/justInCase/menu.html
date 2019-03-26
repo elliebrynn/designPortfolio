@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <link rel="stylesheet" type="text/css" href="css/normalize.css">
+
+        <!-- Stylesheets -->
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+        <link href="css/hover-min.css" rel="stylesheet">
+
+        <!-- script -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        
+
+        <!--[if lt IE 9]>
+            <script src="components/html5shiv/html5shiv.min.js"></script>
+        <![endif]-->
+</head>
+<main>
+    <body>
+        <div class="header">
+        <h1>safeplate</h1>
+        <h2>menu</h2>
+    </div>
+
+
+
+    <form method="POST">
+         <div id="dynamicMenu">
+            <div id="menu0">
+                <div class="container" id="allSection">
+                        <div class="input-group">
+                            Menu Section:<input type="text" placeholder="ex: Appetizers" name="myInputs[]">
+                        </div>
+                        <div class="input-group">
+                            Menu Item:<input type='text' class='menuItem' placeholder='ex: fish tacos' name='myInputs[]'>
+                        </div>
+                        <br> 
+                        <div class="section" id="section0">
+                            <div class="chbx">
+                                Gluten <input type="checkbox" name="Gluten" id="1"> Fish <input type="checkbox" name="fish" id="2"> Dairy <input type="checkbox" name="dairy" id="3"> Tree nuts <input type="checkbox" name="tree_nuts" id="4"> Shellfish <input type="checkbox" name="shellfish" id="5"> Eggs <input type="checkbox" name="eggs" id="6"> Soy <input type="checkbox" name="soy" id="7"><br>
+                            </div>
+                        </div>
+                        <br>
+
+                        <input type="button" value="-" onClick="removeItem(this);"><input type="button" value="+" onClick="addItem(this);">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="input-group">
+            <input type="button" value="Add another menu section" onClick="addSection('dynamicMenu');">
+        </div>
+        <div class="input-group">
+            <input type="button" value="Delete menu section" onClick="removeSection('dynamicMenu');">
+        </div>
+
+        <textarea placeholder="Any comments? Insert here!"></textarea>
+        <br>
+        <div class="input-group">
+            <input type="Submit" value="Submit Menu" class="btn hvr-grow" name="submit_menu">
+        </div>
+    </form>
+
+<div class="element"></div> 
+
+
+
+<script type="text/javascript">
+
+    var sectionNumber = 0;
+    var item_id = 0;
+
+    function addSection(divName){
+        sectionNumber += 1;
+        var newdiv = document.createElement('div');
+        newdiv.id = "menu" + sectionNumber;
+        newdiv.innerHTML = "<div class='container' id='allSection'> \
+        <div class='input-group'>\
+        Menu Section:<input type='text' placeholder='ex: Appetizers' name='myInputs[]'>\
+        </div> \
+        <div class='input-group'> \
+            Menu Item:<input type='text' placeholder='ex: fish tacos' name='myInputs[]'>\
+            </div>\
+            <br>\
+            <div class='section' id='section0'>\
+                <div class='chbx'>\
+                    Gluten <input type='checkbox' name='Gluten' id='1'> \
+                    Fish <input type='checkbox' name='fish'> \
+                    Dairy <input type='checkbox' name='dairy'> \
+                    Tree nuts <input type='checkbox' name='tree_nuts'> \
+                    Shellfish <input type='checkbox' name='shellfish'> \
+                    Eggs <input type='checkbox' name='eggs'> \
+                    Soy <input type='checkbox' name='soy'>\
+                <br>\
+                </div>\
+            </div>\
+            <br>\
+            <input type='button' value='-' onClick='removeItem(this);'><input type='button' value='+' onClick='addItem(this);'></div>";
+
+        document.getElementById(divName).appendChild(newdiv);
+    }
+
+//use this fucntion for deleting menu item
+     function removeSection(divName){
+      if (sectionNumber >= 1){
+         document.getElementById("menu"+sectionNumber).remove();
+         sectionNumber -= 1;
+      }
+
+        var sec = document.getElementById(sectionNumber);
+        sec.remove();
+
+
+    }
+
+     function removeItem(divSection){
+        var parent = divSection.parentNode;
+        var childDiv = parent.querySelector(".section");
+        if(childDiv.children.length > 1) {
+            childDiv.lastChild.remove();
+        } 
+    }
+        
+
+        //delete section 
+     // }
+
+    function addItem(divSection){
+        item_id+=1;
+        var parent = divSection.parentNode;
+        var childDiv = parent.querySelector(".section");
+        var sectionDiv = document.createElement('div');
+
+        childDiv.appendChild(sectionDiv);
+        var newItem = document.createElement('input');
+        newItem.type = 'text';
+        newItem.className = 'menuItem';
+        newItem.placeholder = 'ex: fish tacos';
+        sectionDiv.appendChild(newItem);
+        // menuItem.inputGroup = "newItem";
+        // newItem.innerHTML = "<div class='input-group'>";
+        
+
+        var label= document.createElement("label");
+        var description = document.createTextNode("Gluten");
+        var checkbox = document.createElement("input");
+
+        checkbox.type = "checkbox";    // make the element a checkbox
+        checkbox.name = "GLUTEN";      // give it a name we can check on the server side
+        checkbox.value = "gluten";     // make its value "pair"
+
+        sectionDiv.appendChild(checkbox);   // add the box to the element
+        label.appendChild(description);// add the description to the element
+        sectionDiv.appendChild(label);
+
+        var label2= document.createElement("label");
+        var description2 = document.createTextNode("   Fish");
+        var checkbox2 = document.createElement("input");
+
+        checkbox2.type = "checkbox";    // make the element a checkbox
+        checkbox2.name = "FISH";      // give it a name we can check on the server side
+        checkbox2.value = "fish";     // make its value "pair"
+
+        label2.appendChild(description2);// add the description to the element
+        sectionDiv.appendChild(checkbox2);   // add the box to the element
+        sectionDiv.appendChild(label2);
+
+        var label3= document.createElement("label");
+        var description3 = document.createTextNode("   Dairy");
+        var checkbox3 = document.createElement("input");
+        
+        checkbox3.type = "checkbox";    // make the element a checkbox
+        checkbox3.name = "DAIRY";      // give it a name we can check on the server side
+        checkbox3.value = "dairy";     // make its value "pair"
+
+        label3.appendChild(description3);// add the description to the element
+        sectionDiv.appendChild(checkbox3);   // add the box to the element
+        sectionDiv.appendChild(label3);
+        
+        var label4= document.createElement("label");
+        var description4 = document.createTextNode("   Tree Nuts");
+        var checkbox4 = document.createElement("input");
+        
+        checkbox4.type = "checkbox";    // make the element a checkbox
+        checkbox4.name = "TREE_NUTS";      // give it a name we can check on the server side
+        checkbox4.value = "tree nuts";     // make its value "pair"
+
+        label4.appendChild(description4);// add the description to the element
+        sectionDiv.appendChild(checkbox4);   // add the box to the element
+        sectionDiv.appendChild(label4);
+        
+        
+        var label5= document.createElement("label");
+        var description5 = document.createTextNode("   Shellfish");
+        var checkbox5 = document.createElement("input");
+        
+        checkbox5.type = "checkbox";    // make the element a checkbox
+        checkbox5.name = "SHELLFISH";      // give it a name we can check on the server side
+        checkbox5.value = "shellfish";     // make its value "pair"
+
+        label5.appendChild(description5);// add the description to the element
+        sectionDiv.appendChild(checkbox5);   // add the box to the element
+        sectionDiv.appendChild(label5);
+        
+        var label6= document.createElement("label");
+        var description6 = document.createTextNode("   Eggs");
+        var checkbox6 = document.createElement("input");
+        
+        checkbox6.type = "checkbox";    // make the element a checkbox
+        checkbox6.name = "EGGS";      // give it a name we can check on the server side
+        checkbox6.value = "eggs";     // make its value "pair"
+
+        label6.appendChild(description6);// add the description to the element
+        sectionDiv.appendChild(checkbox6);   // add the box to the element
+        sectionDiv.appendChild(label6);
+        
+        var label4= document.createElement("label");
+        var description4 = document.createTextNode("   Soy");
+        var checkbox4 = document.createElement("input");
+        
+        checkbox4.type = "checkbox";    // make the element a checkbox
+        checkbox4.name = "TREE_NUTS";      // give it a name we can check on the server side
+        checkbox4.value = "soy";     // make its value "pair"
+
+        label4.appendChild(description4);// add the description to the element
+        sectionDiv.appendChild(checkbox4);   // add the box to the element
+        sectionDiv.appendChild(label4);
+        }
+    
+</script>
+    </body>
+</main>
+</html>

@@ -1,0 +1,3 @@
+http://cgi.soic.indiana.edu/~trdeal/capstone/register.php
+
+http://cgi.soic.indiana.edu/~trdeal/capstone/login.php

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>safeplate menu</title>
+    <!-- <style type="text/css">
+        .menuItem {
+            display: block;
+        }
+    </style> -->
+          <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <link rel="stylesheet" type="text/css" href="css/normalize.css">
+
+        <!-- Stylesheets -->
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+        <link href="css/hover-min.css" rel="stylesheet">
+
+        <!-- script -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        
+
+        <!--[if lt IE 9]>
+            <script src="components/html5shiv/html5shiv.min.js"></script>
+        <![endif]-->
+</head>
+
+<body onload="addSection();">
+	<div class="header">
+        <h1>safeplate</h1>
+        <h2>menu</h2>
+    </div>
+    <br>
+    <form action="test.php" method="post">
+
+        <div id="dynamicMenu">
+        	
+              <div class="input-group-name">
+                Restaurant Name:<input type="text" name="restname">
+            </div>
+
+				<br>
+				<div id="sections">
+					<br>
+				 </div>
+        </div><!-- ADDED THIS AS A MASTER CONTAINER FOR THE SECTIONS -->
+                <!--<input type="button" value="-" onClick="removeItem(this);">
+                <input type="button" value="+" onClick="addItem(this);">
+                <br>
+                <br>
+                <div class="section" id="section0">
+                 
+					
+					<div>
+                        Gluten
+                        <input type="checkbox" name="menusection[0][menuitem][0][checkbox][]" value="gluten"> Fish
+                        <input type="checkbox" name="menusection[0][menuitem][0][checkbox][]" value="fish"> Dairy
+                        <input type="checkbox" name="menusection[0][menuitem][0][checkbox][]" value="dairy"> Tree nuts
+                        <input type="checkbox" name="menusection[0][menuitem][0][checkbox][]" value="treenuts"> Shellfish
+                        <input type="checkbox" name="menusection[0][menuitem][0][checkbox][]" value="shellfish"> Eggs
+                        <input type="checkbox" name="menusection[0][menuitem][0][checkbox][]" value="eggs"> Soy
+                        <input type="checkbox" name="menusection[0][menuitem][0][checkbox][]" value="soy">
+                    </div>
+                </div>-->            
+        </div>
+        <br>
+        <input type="button" value="Add another menu section" class='btn' onClick="addSection('dynamicMenu');">
+        <br>
+        <input type="button" value="Delete menu section" class='btn' onClick="deleteSection('dynamicMenu');">
+        <br>
+        <button type="submit" value="Submit" class="sbtn">Submit</button>
+
+    </form>
+<div class="element"></div> 
+    <script type="text/javascript">
+
+        function addSection() {
+		//INFER SECTION NUMBER FROM MARKUP INSTEAD OF MAINTAINING A SEPERATE VARIABLE
+			var sectionNumber=getCurrentNumberOfSections();
+			var sectionsDiv=document.getElementById("sections");
+            var newdiv = document.createElement('div');
+            newdiv.id = "section"+sectionNumber;
+			newdiv.className="section";
+            newdiv.innerHTML = "<div class='container' id='allSection'>\
+            <div class='input-group'>\
+        		Menu Section:<input type='text' placeholder='ex: Appetizers' name='menusection["+sectionNumber+"][name]'>\
+       		</div> \
+            <input type='button' value='-' class='pm_btn' onClick='removeItem(this);'><input type='button' value='+' class='pm_btn' onClick='addItem(this,"+sectionNumber+");'><div class='menu-items'></div>";
+			
+            sectionsDiv.appendChild(newdiv);
+			
+			//REMOVED ITEM FROM HTML STRING JUST ABOVE AND SO WE ARE USING THIS METHOD INSTEAD.  I PASS A CODE NODE SO THAT YOUR JS CAN FIND THE RIGHT SECTION (AND NOT ASSUME THE FIRST ONE)
+			var menuItemsDiv=document.getElementById('section'+sectionNumber).querySelector(".menu-items");
+			addItem(menuItemsDiv,sectionNumber);
+
+        }
+		//ADDED THIS BECAUSE MAINTAINING SESSION NUMBER VARIABLE WAS MESSY.
+		function getCurrentNumberOfSections() {
+			var sectionsDiv=document.getElementById("sections");
+            var numSections=sectionsDiv.childElementCount;
+			return numSections;
+		}
+		
+        function deleteSection(divName) {
+			var numSections=getCurrentNumberOfSections();
+            if (numSections > 1) {
+                document.getElementById("section" + (numSections-1)).remove();               
+            }
+        }
+
+        function removeItem(divSection) {
+            var parent = divSection.parentNode;
+            var menuItemsDiv = parent.querySelector(".menu-items");
+            if (menuItemsDiv.children.length > 1) {
+                menuItemsDiv.lastChild.remove();
+            }
+        }
+
+		//REFACTORED THIS SO THAT YOU CAN INPUT WHICH SECTION TO ADD A MENU-ITEM TO.
+        function addItem(menuItemsDiv,sectionNumber) {			
+			//IF NOT REALLY MENU-ITEMS div, LOOK FOR THE MENU-ITEMS DIV BENEATH THE PARENT.
+			if (menuItemsDiv.className != "menu-items") {
+				menuItemsDiv=menuItemsDiv.parentElement.querySelector(".menu-items");
+			}
+			var item_id = menuItemsDiv.childElementCount; //ACD: INFER CORRECT ITEM_ID FROM THE NUMBER OF EXISTING ITEMS (BECAUSE THIS NEEDS TO BE SECTION SPECIFIC, NOT A GLOBAL VALUES)
+            var menuItemDiv = document.createElement('div');
+			menuItemDiv.className="menu-item";
+            menuItemsDiv.appendChild(menuItemDiv);
+            var newItem = document.createElement('input');
+            newItem.type = 'text';
+			newItem.name = "menusection["+sectionNumber+"][menuitem]["+item_id+"][name]"
+            newItem.className = 'menuItem';
+            newItem.placeholder = 'ex: fish tacos';
+            
+			
+			
+            menuItemDiv.appendChild(newItem);			
+			
+			var text = document.createTextNode('Menu Item:');
+			newItem.parentNode.insertBefore(text, newItem);
+			addAllergensToMenuItem(menuItemDiv,sectionNumber,item_id);
+
+        }
+		
+		//REFACTORED THIS SO THAT YOU CAN INPUT WHICH MENU-ITEM TO ADD ALLERGENS TOO
+		function addAllergensToMenuItem(menuItemDiv,sectionNumber,item_id) {			
+			//USED LOOP HERE TO SIMPLIFY JAVASCRIPT (COPY AND PASTED CODE IS BAD :) )
+			var allergens = ["Gluten","Fish","Dairy","Treenuts","Shellfish","Eggs","Soy"];
+			allergens.forEach(function(value,index) {
+			
+				var label = document.createElement("label");
+				var description = document.createTextNode(value);
+				var checkbox = document.createElement("input");
+				
+				checkbox.type = "checkbox"; // make the element a checkbox
+				//THIS IS THE FORMAT OF THE NAME I USE FOR ALL ADDED ITEM CHECKBOXES.
+				checkbox.name = "menusection["+sectionNumber+"][menuitem]["+item_id+"][checkbox][]"; // give it a name we can check on the server side
+				checkbox.value = value.toLowerCase(); // make its value "pair"
+
+				menuItemDiv.appendChild(checkbox); // add the box to the element
+				label.appendChild(description); // add the description to the element
+				menuItemDiv.appendChild(label);
+			});
+		}
+    </script>
+</body>
+
+</html>

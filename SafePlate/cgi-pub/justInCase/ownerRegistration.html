@@ -1,0 +1,1807 @@
+<html>
+<head>
+
+<body>
+<form action="insertartist.php" method="post">
+Restaurant Name: <input type="text" id="restaurantName" placeholder = "Please enter a restaurant name" initialvalue=""><br>
+
+<!-- <form id="myform">
+   syn<input type="checkbox" name="checkfield" id="g01-01"  onchange="doalert(this)"/>
+
+</form>
+<script>
+function doalert(checkboxElem) {
+  if (checkboxElem.checked) {
+alert("checked")
+  } else {
+    alert("notchecked")
+  }
+}
+</script> -->
+
+
+<script>
+
+
+var listone = new Array();
+for (i = 1; i < 55; i++) {
+    listone.push("category"+String(i))
+}
+//This function makes it so when choosing the 55 categories for checkboxes, you can't pick more than 3
+
+</script>
+
+
+
+Category: <script type="text/javascript" name = "cat">
+
+function CountChecks(whichlist,maxchecked,latestcheck, name) {
+
+var iterationlist;
+eval("iterationlist="+whichlist);
+var count = 0;
+for( var i=0; i<iterationlist.length; i++ ) {
+   if( document.getElementById(iterationlist[i]).checked == true) { count++; }
+   if( count > maxchecked ) { latestcheck.checked = false;}
+ }
+if(count > maxchecked) {
+   alert('Sorry, only ' + maxchecked + ' may be checked.'); //This displays an error message when the number of checkboxes clicked exceed 3
+ }
+
+ var restName = document.getElementById("restaurantName");
+ if (restName.value == "" || restName.value.trim() == "") {
+   latestcheck.checked = false;
+   alert('Please enter a restaurant name before selecting a category');
+ }
+
+
+
+}
+</script>
+
+<p>
+Choose no more than three categories:<br>
+<input id='category1' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="asian">Asian
+<input id='category2' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="asianFusion">Asian Fusion
+<input id='category3' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="americanT">American (Traditional)
+<input id='category4' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="americanN">American (New)
+<input id='category5' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="afghan">Afghan
+<input id='category6' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="bakery">Bakery
+<input id='category7' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="bar">Bar
+<input id='category8' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="bbq">Barbeque
+<input id='category9' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="bistro">Bistro
+<input id='category10' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="bfastBrunch">Breakfast & Brunch
+<input id='category11' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="buffet">Buffet
+<input id='category12' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="burgers">Burgers
+<input id='category13' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="cafe">Caf&#233;
+<input id='category14' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="chinese">Chinese
+<input id='category15' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="cantina">Cantina
+<input id='category16' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="cajun">Cajun/Creole
+<input id='category17' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="comfort">Comfort Food
+<input id='category18' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="coffee">Coffee
+<input id='category19' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="diner">Diner
+<input id='category20' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="deli">Delicatessen
+<input id='category21' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="ethnic">Ethnic
+<input id='category22' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="fastFood">Fast Food
+<input id='category23' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="french">French
+<input id='category24' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="greek">Greek
+<input id='category25' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="grill">Grill
+<input id='category26' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="health">Health Food
+<input id='category27' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="hibachi">Hibachi
+<input id='category28' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="hotPot">Hot Pot
+<input id='category29' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="indian">Indian
+<input id='category30' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="italian">Italian
+<input id='category31' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="iceCream">Ice Cream
+<input id='category32' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="japanese">Japanese
+<input id='category33' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="korean">Korean
+<input id='category34' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="kosher">Kosher
+<input id='category35' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="mexican">Mexican
+<input id='category36' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="mongolian">Mongolian
+<input id='category37' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="mediterranean">Mediterranean
+<input id='category38' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="middleEastern">Middle Eastern
+<input id='category39' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="pancake">Pancake House
+<input id='category40' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="pub">Pub
+<input id='category41' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="pizza">Pizza
+<input id='category42' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="salad">Salads
+<input id='category43' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="sandwiches">Sandwiches
+<input id='category44' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="seafood">Seafood
+<input id='category45' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="sushi">Sushi
+<input id='category46' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="steak">Steak House
+<input id='category47' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="tapas">Tapas
+<input id='category48' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="texMex">Tex-Mex
+<input id='category49' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="thai">Thai
+<input id='category50' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="turkish">Turkish
+<input id='category51' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="takeOut">Take Out
+<input id='category52' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="tavern">Tavern
+<input id='category53' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="vegan">Vegan
+<input id='category54' type="checkbox" name="boxsize[]" onclick="CountChecks('listone',3,this)" value="vegetarian">Vegetarian
+</p>
+<!-- <input type="submit" value="Submit"> -->
+
+
+
+
+    <br>
+<script>
+function disablemonday() {
+    document.getElementById("timeopenM").disabled=true;
+    document.getElementById("timecloseM").disabled=true;
+}
+function enablemonday() {
+    document.getElementById("timeopenM").disabled=false;
+    document.getElementById("timecloseM").disabled=false;
+
+}
+function disabletuesday() {
+    document.getElementById("timeopenT").disabled=true;
+    document.getElementById("timecloseT").disabled=true;
+}
+function enabletuesday() {
+    document.getElementById("timeopenT").disabled=false;
+    document.getElementById("timecloseT").disabled=false;
+
+}
+function disablewednesday() {
+    document.getElementById("timeopenW").disabled=true;
+    document.getElementById("timecloseW").disabled=true;
+}
+function enablewednesday() {
+    document.getElementById("timeopenW").disabled=false;
+    document.getElementById("timecloseW").disabled=false;
+
+}
+function disablethursday() {
+    document.getElementById("timeopenR").disabled=true;
+    document.getElementById("timecloseR").disabled=true;
+}
+function enablethursday() {
+    document.getElementById("timeopenR").disabled=false;
+    document.getElementById("timecloseR").disabled=false;
+
+}
+function disablefriday() {
+    document.getElementById("timeopenF").disabled=true;
+    document.getElementById("timecloseF").disabled=true;
+}
+function enablefriday() {
+    document.getElementById("timeopenF").disabled=false;
+    document.getElementById("timecloseF").disabled=false;
+
+}
+function disablesaturday() {
+    document.getElementById("timeopenS").disabled=true;
+    document.getElementById("timecloseS").disabled=true;
+}
+function enablesaturday() {
+    document.getElementById("timeopenS").disabled=false;
+    document.getElementById("timecloseS").disabled=false;
+
+}
+function disablesunday() {
+    document.getElementById("timeopenU").disabled=true;
+    document.getElementById("timecloseU").disabled=true;
+}
+function enablesunday() {
+    document.getElementById("timeopenU").disabled=false;
+    document.getElementById("timecloseU").disabled=false;
+
+} //all these functions make it so if you choose the restaurant being closed then the times won't show up
+</script>
+
+    <br>
+
+Hours:<br>
+<br>
+Select day:<br>
+<select name=days1 id=Days>
+<option name= "Monday" value= "Monday" selected>Monday</option>
+<option name= "Tuesday" value= "Tuesday">Tuesday</option>
+<option name= "Wednesday" value= "Wednesday">Wednesday</option>
+<option name= "Thursday" value= "Thursday">Thursday</option>
+<option name= "Friday" value= "Friday">Friday</option>
+<option name= "Saturday" value= "Saturday">Saturday</option>
+<option name= "Sunday" value= "Sunday">Sunday</option>
+</select>
+
+<!-- <form> -->
+  <input type="radio" onclick="enablemonday()" name="OC1" value="Open"> Open<br>
+  <input type="radio" onclick="disablemonday()" name="OC1" value="Closed"> Closed<br>
+<!-- </form> -->
+Start Time:<br>
+<select name="timeopenM" id="timeopenM">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+<br>
+Closing Time:<br>
+<select name="timecloseM" id="timecloseM">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+</p>
+<br>
+Select Day:<br>
+<select name=days2 id=Days>
+<option name= "Monday" value= "Monday">Monday</option>
+<option name= "Tuesday" value= "Tuesday" selected>Tuesday</option>
+<option name= "Wednesday" value= "Wednesday">Wednesday</option>
+<option name= "Thursday" value= "Thursday">Thursday</option>
+<option name= "Friday" value= "Friday">Friday</option>
+<option name= "Saturday" value= "Saturday">Saturday</option>
+<option name= "Sunday" value= "Sunday">Sunday</option>
+</select>
+<!-- <form> -->
+  <form>
+  <input type="radio" onclick="enabletuesday()" name="OC2" value="Open" checked> Open<br>
+  <input type="radio" onclick="disabletuesday()" name="OC2" value="Closed"> Closed<br>
+<!-- </form> -->
+Start Time:<br>
+<select name="timeopenT" id="timeopenT">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+<br>
+Closing Time:<br>
+<select name="timecloseT" id="timecloseT">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+
+<br>
+Select Day:<br>
+<select name=days3 id=Days>
+<option name= "Monday" value= "Monday">Monday</option>
+<option name= "Tuesday" value= "Tuesday">Tuesday</option>
+<option name= "Wednesday" value= "Wednesday"selected>Wednesday</option>
+<option name= "Thursday" value= "Thursday">Thursday</option>
+<option name= "Friday" value= "Friday">Friday</option>
+<option name= "Saturday" value= "Saturday">Saturday</option>
+<option name= "Sunday" value= "Sunday">Sunday</option>
+</select>
+<!-- <form > -->
+  <input type="radio" onclick="enablewednesday()" name="OC3" value="Open" checked> Open<br>
+  <input type="radio" onclick="disablewednesday()" name="OC3" value="Closed"> Closed<br>
+<!-- </form> -->
+Start Time:<br>
+<select name="timeopenW" id="timeopenW">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+<br>
+Closing Time:<br>
+<select name="timecloseW" id="timecloseW">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+<br>
+Select Day:<br>
+<select name=days4 id=Days>
+<option name= "Monday" value= "Monday">Monday</option>
+<option name= "Tuesday" value= "Tuesday">Tuesday</option>
+<option name= "Wednesday" value= "Wednesday">Wednesday</option>
+<option name= "Thursday" value= "Thursday"selected>Thursday</option>
+<option name= "Friday" value= "Friday">Friday</option>
+<option name= "Saturday" value= "Saturday">Saturday</option>
+<option name= "Sunday" value= "Sunday">Sunday</option>
+</select>
+<!-- <form> -->
+  <input type="radio" onclick="enablethursday()" name="OC4" value="Open" checked> Open<br>
+  <input type="radio" onclick="disablethursday()" name="OC4" value="Closed"> Closed<br>
+<!-- </form> -->
+Start Time:<br>
+<select name="timeopenR" id="timeopenR">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+<br>
+Closing Time:<br>
+<select name="timecloseR" id="timecloseR">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+<br>
+Select Day:<br>
+<select name=days5 id=Days>
+<option name= "Monday" value= "Monday">Monday</option>
+<option name= "Tuesday" value= "Tuesday">Tuesday</option>
+<option name= "Wednesday" value= "Wednesday">Wednesday</option>
+<option name= "Thursday" value= "Thursday">Thursday</option>
+<option name= "Friday" value= "Friday" selected>Friday</option>
+<option name= "Saturday" value= "Saturday">Saturday</option>
+<option name= "Sunday" value= "Sunday">Sunday</option>
+</select>
+<!-- <form> -->
+  <input type="radio" onclick="enablefriday()" name="OC5" value="Open" checked> Open<br>
+  <input type="radio" onclick="disablefriday()" name="OC5" value="Closed"> Closed<br>
+<!-- </form> -->
+Start Time:<br>
+<select name="timeopenF" id="timeopenF">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+<br>
+Closing Time:<br>
+<select name="timecloseF" id="timecloseF">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+<br>
+Select Day:<br>
+<select name=days6 id=Days>
+<option name= "Monday" value= "Monday">Monday</option>
+<option name= "Tuesday" value= "Tuesday">Tuesday</option>
+<option name= "Wednesday" value= "Wednesday">Wednesday</option>
+<option name= "Thursday" value= "Thursday">Thursday</option>
+<option name= "Friday" value= "Friday">Friday</option>
+<option name= "Saturday" value= "Saturday"selected>Saturday</option>
+<option name= "Sunday" value= "Sunday">Sunday</option>
+</select>
+<!-- <form> -->
+  <input type="radio" onclick="enablesaturday()" name="OC6" value="Open" checked> Open<br>
+  <input type="radio" onclick="disablesaturday()" name="OC6" value="Closed"> Closed<br>
+<!-- </form> -->
+Start Time:<br>
+<select name="timeopenS" id="timeopenS">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+<br>
+Closing Time:<br>
+<select name="timecloseS" id="timecloseS">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+<br>
+Select Day:<br>
+<select name=days7 id=Days>
+<option name= "Monday" value= "Monday">Monday</option>
+<option name= "Tuesday" value= "Tuesday">Tuesday</option>
+<option name= "Wednesday" value= "Wednesday">Wednesday</option>
+<option name= "Thursday" value= "Thursday">Thursday</option>
+<option name= "Friday" value= "Friday">Friday</option>
+<option name= "Saturday" value= "Saturday">Saturday</option>
+<option name= "Sunday" value= "Sunday" selected>Sunday</option>
+</select>
+<!-- <form> -->
+  <input type="radio" onclick="enablesunday()" name="OC7" value="Open" checked> Open<br>
+  <input type="radio" onclick="disablesunday()" name="OC7" value="Closed"> Closed<br>
+<!-- </form> -->
+Start Time:<br>
+<select name="timeopenU" id="timeopenU">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+<br>
+Closing Time:<br>
+<select name="timecloseU" id="timecloseU">
+<option name="12:00 AM" value="12:00 AM">12:00 AM</option>
+<option name="12:30 AM" value="12:30 AM">12:30 AM</option>
+
+
+<option name="1:00 AM" value="1:00 AM">1:00 AM</option>
+<option name="1:30 AM" value="1:30 AM">1:30 AM</option>
+
+
+<option name="2:00 AM" value="2:00 AM">2:00 AM</option>
+<option name="2:30 AM" value="2:30 AM">2:30 AM</option>
+
+
+<option name="3:00 AM" value="3:00 AM">3:00 AM</option>
+<option name="3:30 AM" value="3:30 AM">3:30 AM</option>
+
+
+<option name="4:00 AM" value="4:00 AM">4:00 AM</option>
+<option name="4:30 AM" value="4:30 AM">4:30 AM</option>
+
+
+<option name="5:00 AM" value="5:00 AM">5:00 AM</option>
+<option name="5:30 AM" value="5:30 AM">5:30 AM</option>
+
+
+<option name="6:00 AM" value="6:00 AM">6:00 AM</option>
+<option name="6:30 AM" value="6:30 AM">6:30 AM</option>
+
+
+<option name="7:00 AM" value="7:00 AM">7:00 AM</option>
+<option name="7:00 AM" value="7:30 AM">7:30 AM</option>
+
+
+<option name="8:00 AM" value="8:00 AM">8:00 AM</option>
+<option name="8:30 AM" value="8:30 AM">8:30 AM</option>
+
+
+<option name="9:00 AM" value="9:00 AM">9:00 AM</option>
+<option name="9:30 AM" value="9:30 AM">9:30 AM</option>
+
+
+<option name="10:00 AM" value="10:00 AM">10:00 AM</option>
+<option name="10:30 AM" value="10:30 AM">10:30 AM</option>
+
+
+<option name="11:00 AM" value="11:00 AM">11:00 AM</option>
+<option name="11:30 AM" value="11:30 AM">11:30 AM</option>
+
+
+<option name="12:00 PM" value="12:00 PM">12:00 PM</option>
+<option name="12:30 PM" value="12:30 PM">12:30 PM</option>
+
+
+<option name="1:00 PM" value="1:00 PM">1:00 PM</option>
+<option name="1:30 PM" value="1:30 PM">1:30 PM</option>
+
+
+<option name="2:00 PM" value="2:00 PM">2:00 PM</option>
+<option name="2:30 PM" value="2:30 PM">2:30 PM</option>
+
+
+<option name="3:00 PM" value="3:00 PM">3:00 PM</option>
+<option name="3:30 PM" value="3:30 PM">3:30 PM</option>
+
+
+<option name="4:00 PM" value="4:00 PM">4:00 PM</option>
+<option name="4:30 PM" value="4:30 PM">4:30 PM</option>
+
+
+<option name="5:00 PM" value="5:00 PM">5:00 PM</option>
+<option name="5:30 PM" value="5:30 PM">5:30 PM</option>
+
+
+<option name="6:00 PM" value="6:00 PM">6:00 PM</option>
+<option name="6:30 PM" value="6:30 PM">6:30 PM</option>
+
+
+<option name="7:00 PM" value="7:00 PM">7:00 PM</option>
+<option name="7:30 PM" value="7:30 PM">7:30 PM</option>
+
+
+<option name="8:00 PM" value="8:00 PM">8:00 PM</option>
+<option name="8:30 PM" value="8:30 PM">8:30 PM</option>
+
+
+<option name="9:00 PM" value="9:00 PM">9:00 PM</option>
+<option name="9:30 PM" value="9:30 PM">9:30 PM</option>
+
+
+<option name="10:00 PM" value="10:00 PM">10:00 PM</option>
+<option name="10:30 PM" value="10:30 PM">10:30 PM</option>
+
+
+<option name="11:00 PM" value="11:00 PM">11:00 PM</option>
+<option name="11:30 PM" value="11:30 PM">11:30 PM</option>
+</select>
+
+
+<br>
+Phone Number: <input type="text" name="phonenumber"><br>
+Address Line 1: <input type="text" name="addresslineone"><br>
+Address Line 2 (Optional): <input type="text" name="addresslinetwo"><br>
+City: <input type="text" name="city"><br>
+State:
+<select name="state">
+	<option name="AL" value="AL">AL</option>
+	<option name="AK" value="AK">AK</option>
+	<option name="AR" value="AR">AR</option>
+	<option name="AZ" value="AZ">AZ</option>
+	<option name="CA" value="CA">CA</option>
+	<option name="CO" value="CO">CO</option>
+	<option name="CT" value="CT">CT</option>
+	<option name="DC" value="DC">DC</option>
+	<option name="DE" value="DE">DE</option>
+	<option name="FL" value="FL">FL</option>
+	<option name="GA" value="GA">GA</option>
+	<option name="HI" value="HI">HI</option>
+	<option name="IA" value="IA">IA</option>
+	<option name="ID" value="ID">ID</option>
+	<option name="IL" value="IL">IL</option>
+	<option name="IN" value="IN">IN</option>
+	<option name="KS" value="KS">KS</option>
+	<option name="KY" value="KY">KY</option>
+	<option name="LA" value="LA">LA</option>
+	<option name="MA" value="MA">MA</option>
+	<option name="MD" value="MD">MD</option>
+	<option name="ME" value="ME">ME</option>
+	<option name="MI" value="MI">MI</option>
+	<option name="MN" value="MN">MN</option>
+	<option name="MO" value="MO">MO</option>
+	<option name="MS" value="MS">MS</option>
+	<option name="MT" value="MT">MT</option>
+	<option name="NC" value="NC">NC</option>
+	<option name="NE" value="NE">NE</option>
+	<option name="NE" value="NH">NH</option>
+	<option name="NJ" value="NJ">NJ</option>
+	<option name="NM" value="NM">NM</option>
+	<option name="NV" value="NV">NV</option>
+	<option name="NY" value="NY">NY</option>
+	<option name="ND" value="ND">ND</option>
+	<option name="OH" value="OH">OH</option>
+	<option name="OK" value="OK">OK</option>
+	<option name="OR" value="OR">OR</option>
+	<option name="PA" value="PA">PA</option>
+	<option name="RI" value="RI">RI</option>
+	<option name="SC" value="SC">SC</option>
+	<option name="SD" value="SD">SD</option>
+	<option name="TN" value="TN">TN</option>
+	<option name="TX" value="TX">TX</option>
+	<option name="UT" value="UT">UT</option>
+	<option name="VT" value="VT">VT</option>
+	<option name="VA" value="VA">VA</option>
+	<option name="WA" value="WA">WA</option>
+	<option name="WI" value="WI">WI</option>
+	<option name="WV" value="WV">WV</option>
+	<option name="WY" value="WY">WY</option>
+</select><br>
+
+Zip: <input type="text" name="zip">
+<br>
+<br>
+<br>
+Background Image: <input type="file" onchange="previewFile()"><br>
+<img src="" height="200" alt="Image preview...">
+<br>
+<br>
+Submit <input type="submit" value="Submit">
+</form>
+<br>
+<br>
+<br>
+</p>
+<script>
+   function previewFile(){
+       var preview = document.querySelector('img'); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
+  }
+
+  previewFile();  //calls the function named previewFile()
+  </script>
+
+  <form method="POST">
+    <div id="dynamicRemove">
+     <div class="section" id="section0">
+      Gallery:<input type="file" name="myInputs[]">
+      <br><input type="button" value="Add another picture" onClick="addPicture('section0');">
+      <br><input type="button" value="Remove Picture" onClick="removePicture(section0);">
+     </div>
+    </div>
+   </form>
+
+
+
+
+
+ <script type="text/javascript">
+
+var newCount = 0
+   function addPicture(section){
+    var newItem = document.createElement('input');
+    newItem.type = 'file';
+    newItem.className = 'addPicture';
+    document.getElementById(section).appendChild(newItem);
+    newCount += 1;
+
+   }
+
+   function removePicture(section){
+    var parent = section.parentNode;
+      var childDiv = parent.querySelector(".section");
+      if(newCount >= 1) {
+        childDiv.lastChild.remove();
+        newCount -= 1;
+      }
+      //use this fucntion for deleting extra pictures
+   }
+   </script>
+
+
+<br>
+<br>
+
+</body>
+</head>
+</html>

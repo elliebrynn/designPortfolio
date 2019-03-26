@@ -1,0 +1,264 @@
+/* natural box model */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+/* Browser Upgrade Prompt */
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* Extra small devices (phones, less than 768px) */
+
+
+/* hides an element, but not from screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* no break */
+.nobr {
+    white-space: nowrap;
+}
+
+/* White: #FCFBF8
+Orange: #FF6A3F
+Green: #00CD75
+Blue: #81DAE0
+Yellow: #F8CE00 */
+/*
+    STRUCTURE
+*/
+body {
+	background: #FCFBF8;
+}
+.header {
+	width: 80%;
+	margin: 30px auto 0px;
+	text-align: center;
+}
+h1 {
+	font-family: 'Concert One', cursive;
+	margin-bottom: 50px;
+	font-size: 5em;
+	color: #FF6A3F;
+}
+h2 {
+	font-family: 'Open Sans', sans-serif;
+}
+.subhead{
+	font-family: 'Open Sans', sans-serif;
+	text-align: right;
+	display: flex;
+	justify-content: center;
+	align-content: space-between;
+	align-items: center;
+	font-size: 10px;
+	/* font-size: 10px; */
+}
+.spoon, .fork{
+	width: auto;
+	float: right;
+	/* padding: 10px; */
+  height: 80px;
+}
+.fork{
+	margin-left: 20px;
+}
+.element {
+  width: 100%;
+	-webkit-clip-path: polygon(0 81%, 100% 0%, 100% 100%, 0% 100%);
+	clip-path: polygon(0 81%, 100% 0%, 100% 100%, 0% 100%);
+  /* clip-path: polygon(100% 100%, 0% 20%, 100% 0%, 0% 0%); */
+	background: #81DAE0;
+	background-repeat: no-repeat;
+  background-size: cover;
+	position: fixed;
+	top: 70%;
+	bottom: 0px;
+	z-index: -1;
+}
+.input-group {
+	margin: 10px 0px 10px 0px;
+	display: flex;
+	justify-content: center;
+}
+.input-group input {
+	height: 30px;
+	width: 93%;
+	padding: 5px 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: none;
+	font-family: 'Open Sans', sans-serif;
+}
+.btn {
+	padding: 0px 50px 10px 50px;
+	font-family: 'Concert One', cursive;
+	font-size: 20px;
+	color: white;
+	background: #F8CE00;
+	border: none;
+	border-radius: 5px;
+}
+.registration{
+	width: 60%;
+	margin-left: 20%;
+	padding-left: 20px;
+	border-left-style:solid;
+  border-left-width:thick;
+}
+.sign-in{
+	margin-top: 30px;
+}
+p {
+	font-family: 'Concert One', cursive;
+	font-size: 12px;
+	color: black;
+}
+a {
+	font-family: 'Concert One', cursive;
+	font-size: 24px;
+	color: #00CD75;
+	text-decoration: none;
+}
+/* a:hover, a:active, a:visited {
+	border-bottom-style:solid;
+  border-bottom-width:20px;
+	border-bottom-color:#00CD75;
+  color: black;
+	text-decoration: none;
+	color: black;
+} */
+
+.error {
+	width: 92%;
+	margin: 0px auto;
+	padding: 10px;
+	border: 1px solid #FF6A3F;
+	color: #FF6A3F;
+	background: #FCFBF8;
+	border-radius: 5px;
+	text-align: left;
+}
+.success {
+	color: #00CD75;
+	background: #FCFBF8;
+	border: 1px solid #00CD75;
+	margin-bottom: 20px;
+}
+
+/*
+    TYPOGRAPHY
+*/
+
+
+/*
+    IMAGES
+*/
+
+/* clearfix - in case you decide to float elements */
+.group::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* RWD */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  h1 {
+		font-size: 150px;
+	}
+  .fork, .spoon {
+      height: 100px;
+  }
+  .fork{
+  	margin-left: 30px;
+  }
+  .subhead{
+    font-size: 16px;
+  }
+  .input-group input {
+    width: 60%;
+  }
+  p{
+    font-size:16px;
+  }
+  a{
+    font-size: 28px;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	h1 {
+		font-size: 175px;
+    margin-top: 0;
+    padding-top: 0;
+	}
+	h2 {
+		font-size: 36px;
+	}
+	.subhead{
+		font-size: 20px;
+	}
+	.btn {
+		padding: 0px 50px 10px 50px;
+		font-size: 20px;
+		border-radius: 5px;
+	}
+  .fork, .spoon {
+      height: 150px;
+  }
+  .fork{
+  	margin-left: 60px;
+  }
+  .input-group input {
+  	width: 30%;
+  }
+  p{
+    font-size:18px;
+  }
+  a{
+    font-size: 32px;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 200px;
+  }
+  .fork, .spoon {
+      height: 180px;
+  }
+  .subhead{
+    font-size: 24px;
+  }
+  .input-group input {
+    width: 20%;
+  }
+  a{
+    font-size: 45px;
+  }
+}
