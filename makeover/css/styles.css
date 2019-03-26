@@ -42,7 +42,7 @@ body {
   color: black /* body text on white */
 }
 
-a {
+nav a {
 	color: black; /*social icons*/
 	text-decoration: none;
 }
@@ -51,7 +51,7 @@ a:hover {
 	color: #F7EDE8; /* social icons */
 }
 
-.container {
+#fullPage {
 	position: relative;
 	margin-top: 15em;
 }
@@ -72,10 +72,11 @@ a:hover {
 	font-weight: 400;
 }
 
-body div.container div div img {
+/* THIS WAS MESSING UP THE LOGO IN NAV */
+/* body div.container div div img {
   position: absolute;
   height: 100%;
-}
+} */
 
 .container > header > span {
 	display: block;
@@ -192,7 +193,7 @@ body div.container div div img {
 }
 
 .main > section:nth-child(even) {
-	background: #F7EDE8;/* pink #F8D5BA */;/* #F5D2C5; */ /* background of white body text */ /* #869D9C grey blue */
+	background: #F7EDE8;
 	color: black;
 }
 
@@ -203,7 +204,7 @@ body div.container div div img {
 .main section p {
 	margin: 0;
 	padding: 1em 0;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	line-height: 1.5;
 }
 
@@ -218,12 +219,17 @@ body div.container div div img {
 
 .main #home h2, #contact h3 {
 		text-align: center;
-		font-size: 4em;
 		margin: 0;
-		padding: 0 0 1em 0;
+		padding: 0 0 0.3em 0;
 		line-height: 1.5;
 		font-weight: normal;
 	}
+.main #home h2{
+  font-size: 4em;
+}
+.main #contact h3{
+  font-size: 3.5em;
+}
 
 	.main #home h2, .main #about p {
 			font-family: 'Open Sans', sans-serif;
@@ -271,10 +277,11 @@ body div.container div div img {
 #gallery h3 {
 	margin: 0;
 	font-family: 'Contrail One', cursive;
-	font-size: 4em;
+	font-size: 3.5em;
+  padding: 0 0 0.3em 0;
 }
 
-.grid .unit img{
+#gallery .grid .unit img{
 	max-width: 250px;
     height: auto;
     position: relative;
@@ -287,7 +294,7 @@ body div.container div div img {
 	opacity: 0.8;
 }
 
-.cssGridContainer {
+/* .cssGridContainer {
 	display: grid;
 	grid-template-columns: 30% 30% 30%;
   grid-template-rows: auto;
@@ -303,7 +310,7 @@ body div.container div div img {
 .item img {
 	width: auto;
 	max-height: 400px;
-}
+} */
 
 /* #about {
 background: url(../images/confetti.png) no-repeat center center;
@@ -314,45 +321,64 @@ background-size: cover;
 } */
 
 .main #about{
-	display: block;
 	margin: 0 auto;
-	padding: 40px 80px 40px 80px;
+  padding: 40px 80px 40px 80px;
+  max-width 100%;
 }
 .main #about h3 {
 	font-family: 'Contrail One', cursive;
 	text-align: center;
-	font-size: 4em;
-	margin: 0 auto;
-	padding: 0;
+	font-size: 3.5em;
+  margin: 0;
+  padding: 0 0 0.3em 0;
 }
-
-.main .flex-container  {
+ .main .flex-container  {
 	display: flex;
-	flex-flow: row nowrap;
-	padding: 0;
+  justify-content: space-around;
+  align-items: center;
+  max-width: none;
+  padding: 0;
 }
+#about .textureMe{
+  display: flex;
+  min-width:550px;
+  height:auto;
+}
+.blurb{
+	min-width: 482px;
+	padding-left: 20px!important;
+}
+#about img{
+	max-width: 100%;
+  height: 450px;
+  position: relative;
+}
+#about .texture{
+  padding: 20px;
+}
+/* #about .texture
+{
+  position: absolute;
+  padding-top: 56px;
+  height: 450px;
+} */
+/* #about img{
+  max-width 100%;
+  height: auto;
+  position: fixed;
+} */
 
-.col-2{
-	width: 600px;
-	padding: 20px;
-}
-.left{
-	text-align: right;
-}
-.right{
-	text-align: left;
-}
-h3 {
-	font-family: 'Contrail One', cursive;
-}
-#spacer {
+
+/* CONTACT */
+
+/* #spacer {
 	font-family: 'Contrail One', cursive;
 	font-size: 6em !important;
 	padding-bottom: 0 !important;
+} */
+#contact .texture{
+  height:auto;
 }
-
-/* FORM */
-
 /* Style inputs with type="text", select elements and textareas */
 input[type=text], select, textarea {
 	font-family: 'Open Sans', sans-serif;
@@ -369,7 +395,9 @@ input[type=text], select, textarea {
 .third {
 	width:  33% !important;
 }
-
+.half {
+  width:  49.8% !important;
+}
 /* Style the submit button with a specific background color etc */
 input[type=submit] {
     background-color: black;
@@ -396,7 +424,11 @@ form {
     padding: 20px;
     margin-bottom: 40px;
 }
-
+iframe{
+  border: none;
+  width: 0;
+  height: 0;
+}
 
 /* SOCIAL */
 
@@ -408,10 +440,15 @@ form {
 	margin: 20px 20px 20px 22px;
 	width: 20%;
 }
+a i.fa, a i.fa:active{
+  color: #9CC1E7;
+}
+a i.fa:hover{
+  color: #F7EDE8;
+}
 #social2 .grid{
 	text-align: center;
 }
-
 /* footer */
 /* .footer{
 	position: sticky;
@@ -486,5 +523,13 @@ form {
 		justify-content: center;
 		width: 100%;
 	}
+  #gallery aside h3{
+    display:none;
+  }
+  #gallery aside{
+    display: none;
+    width: 0px;
+    padding: 0px;
+  }
 
 }
