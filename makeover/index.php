@@ -227,17 +227,17 @@ if($_POST["submit"]) {
 				<section id="social2">
 					<div class="grid">
 					<div class="center-on-mobiles">
+            <div class="unit one-quarter">
+              <a href="https://www.instagram.com/elliebrynn/"><i class="fa fa-instagram  fa-5x" aria-hidden="true"></i></a>
+            </div>
+						<div class="unit one-quarter">
+							<a href="https://github.com/elliebrynn"><i class="fa fa-github  fa-5x" aria-hidden="true"></i></a>
+						</div>
 						<div class="unit one-quarter">
 							<a href="https://www.linkedin.com/in/thomsonellie/"><i class="fa fa-linkedin-square  fa-5x" aria-hidden="true"></i></a>
 						</div>
 						<div class="unit one-quarter">
-							<a href="https://twitter.com/elliebrynn"><i class="fa fa-twitter  fa-5x" aria-hidden="true"></i></a>
-						</div>
-						<div class="unit one-quarter">
-							<a href="https://www.pinterest.com/elliebrynn/"><i class="fa fa-pinterest-p  fa-5x" aria-hidden="true"></i></a>
-						</div>
-						<div class="unit one-quarter">
-							<a href="https://www.instagram.com/elliebrynn/"><i class="fa fa-instagram  fa-5x" aria-hidden="true"></i></a>
+							<a href="https://dribbble.com/elliebrynn"><i class="fa fa-dribbble  fa-5x" aria-hidden="true"></i></a>
 						</div>
 					</div>
 					</div>
