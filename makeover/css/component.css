@@ -29,19 +29,17 @@
 .cbp-af-header img,
 .cbp-af-header nav a {
 	line-height: 230px;
+	height: 230px;
 }
 
 .cbp-af-header img {
-	/* font-family: 'Shrikhand', cursive; */
-	color: white; /* h1 text before hover */
+	text-transform: uppercase;
+	color: #333;
 	letter-spacing: 4px;
-	/* letter-spacing: 5px;
-	font-size: 2em;
-	margin-left: 175px;
-	margin-top: 60px; */
-	font-size: 3.2em;
+	font-size: 4em;
 	margin: 0;
 	float: left;
+	height: 230px;
 	padding: 60px;
 }
 
@@ -50,7 +48,7 @@
 }
 
 .cbp-af-header nav a {
-	color: black; /* Nav options */
+	color: black;
 	font-weight: 700;
 	margin: 0 0 0 20px;
 	font-size: 1.4em;
@@ -61,6 +59,7 @@
 	color: black; /* nav options on hover */
 	padding-bottom: 5px;
 	border-bottom: 3px solid black;
+	text-decoration: none;
 }
 
 /* Transitions and class for reduced height */
@@ -78,11 +77,13 @@
 .cbp-af-header.cbp-af-header-shrink img,
 .cbp-af-header.cbp-af-header-shrink nav a {
 	line-height: 90px;
+	height: 90px;
 }
 
 .cbp-af-header.cbp-af-header-shrink img {
 	font-size: 2em;
-	padding: 10px;
+	height: 90px;
+	padding: 20px;
 }
 
 /* Example Media Queries */
@@ -90,6 +91,7 @@
 
 	.cbp-af-header .cbp-af-inner {
 		width: 100%;
+		padding: 20px;
 	}
 
 	.cbp-af-header img,
@@ -102,34 +104,38 @@
 
 	.cbp-af-header img,
 	.cbp-af-header nav a {
-		line-height: 115px;
+		line-height: 60px;
+		height: 100px;
+		padding: 10px;
 	}
 
 	.cbp-af-header nav a {
 		margin: 0 10px;
+		padding: 0;
+		font-size: 1.3em;
 	}
 
 	.cbp-af-header.cbp-af-header-shrink img,
 	.cbp-af-header.cbp-af-header-shrink nav a {
-		line-height: 45px;
+		line-height: 40px;
+		height: 60px;
+		padding: 0;
 	}
 
 	.cbp-af-header.cbp-af-header-shrink img {
 		font-size: 2em;
+		height: 30px;
 	}
 
 	.cbp-af-header.cbp-af-header-shrink nav a {
-		font-size: 1em;
+		font-size: 0.8em;
 	}
 }
 
 @media screen and (max-width: 32.25em) {
 	.cbp-af-header nav a {
-		font-size: 1em;
+		font-size: 1.3em;
 	}
-	.cbp-af-header img {
-		font-size: 3em;
-		line-height: 70px;
 }
 
 @media screen and (max-width: 24em) {
